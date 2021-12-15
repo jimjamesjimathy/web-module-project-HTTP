@@ -6,6 +6,8 @@ import axios from 'axios';
 
 const MovieList = (props)=> {
     const { movies, favoriteMovies } = props;
+    
+
     return (
         <div className="col">
             <table className="table table-striped table-hover">

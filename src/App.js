@@ -14,6 +14,7 @@ const App = (props) => {
   const [movies, setMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const { id } = useParams();
+  const { push }= useHistory();
 
   useEffect(()=>{
     axios.get(`http://localhost:9000/api/movies`)
@@ -26,7 +27,8 @@ const App = (props) => {
   }, []);
 
   const deleteMovie = (id)=> {
-
+    setMovies(movies.filter(movie =>(movie.id !== id)));
+    console.log(movies)
   }
 
   const addToFavorites = (movie) => {
@@ -50,11 +52,11 @@ const App = (props) => {
             </Route>
 
             <Route path="/movies/:id">
-              <Movie/>
+              <Movie deleteMovie={deleteMovie} />
             </Route>
 
             <Route path="/movies">
-              <MovieList movies={movies}/>
+              <MovieList {...props} movies={movies}/>
             </Route>
 
             <Route path="/">

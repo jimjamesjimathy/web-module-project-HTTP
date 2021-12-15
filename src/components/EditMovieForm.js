@@ -21,9 +21,16 @@ const EditMovieForm = (props) => {
     useEffect(()=>{
         axios.get(`http://localhost:9000/api/movies/${id}`)
             .then(res=>{
-                setMovie(res.data);
+				setMovie(res.data)
             })
-	}, [id]);
+	}, []);
+
+		console.log(id);
+
+	if(!movie) {
+		return(<div><h3>Still fetching data...</h3></div>)
+	}
+
 	
 	const handleChange = (e) => {
         setMovie({

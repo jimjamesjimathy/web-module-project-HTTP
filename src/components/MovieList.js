@@ -1,12 +1,11 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
 import MovieListItem from './MovieListItem';
 import MovieFooter from './MovieFooter';
 import FavoriteMovieList from './FavoriteMovieList';
+import axios from 'axios';
 
 const MovieList = (props)=> {
     const { movies, favoriteMovies } = props;
-
     return (
         <div className="col">
             <table className="table table-striped table-hover">
